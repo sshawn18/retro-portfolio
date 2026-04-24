@@ -10,7 +10,8 @@ export type WindowId =
   | "anilist"
   | "blog"
   | "contact"
-  | "recycle";
+  | "recycle"
+  | "portfolio";
 
 export type DesktopWindow = {
   id: WindowId;

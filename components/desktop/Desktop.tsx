@@ -23,6 +23,7 @@ import { ContactWindow } from "./windows/ContactWindow";
 import { NowPlayingWindow } from "./windows/NowPlayingWindow";
 import { LetterboxdWindow } from "./windows/LetterboxdWindow";
 import { AnilistWindow } from "./windows/AnilistWindow";
+import { PortfolioWindow } from "./windows/PortfolioWindow";
 import { SoonWindow } from "./windows/SoonWindow";
 import { RecycleWindow } from "./windows/RecycleWindow";
 import { site } from "@/content/site";
@@ -141,10 +142,20 @@ const templates: Record<WindowId, Template> = {
     width: 380,
     content: <RecycleWindow />,
   },
+  portfolio: {
+    id: "portfolio",
+    title: "Portfolio.exe — Ravi Gupta",
+    icon: "📋",
+    x: 160,
+    y: 60,
+    width: 520,
+    content: <PortfolioWindow />,
+  },
 };
 
 const iconOrder: { id: WindowId; label: string; glyph: ReactNode }[] = [
   { id: "mycomputer", label: "My Computer", glyph: <Computer variant="32x32_4" style={iconStyle} /> },
+  { id: "portfolio",  label: "Portfolio",   glyph: <span style={{ fontSize: 32, lineHeight: 1, display: "block", textAlign: "center" }}>📋</span> },
   { id: "about",      label: "About.txt",   glyph: <Notepad  variant="32x32_4" style={iconStyle} /> },
   { id: "projects",   label: "Projects",    glyph: <Folder   variant="32x32_4" style={iconStyle} /> },
   { id: "now",        label: "Now Playing", glyph: <CdMusic  variant="32x32_4" style={iconStyle} /> },

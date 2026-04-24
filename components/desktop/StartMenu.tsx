@@ -20,6 +20,7 @@ type MenuItem = {
 
 const programs: MenuItem[] = [
   { id: "welcome", label: "Welcome", glyph: "👋" },
+  { id: "portfolio", label: "Portfolio.exe", glyph: "📋" },
   { id: "about", label: "About.txt", glyph: "📄" },
   { id: "projects", label: "Projects", glyph: "📁" },
   { id: "now", label: "Now Playing", glyph: "🎵" },

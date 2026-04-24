@@ -31,11 +31,10 @@ body {
   background-position: 0 0, center, center;
   background-repeat: repeat, no-repeat, no-repeat;
   background-attachment: fixed, fixed, fixed;
-  font-family: "Pixelated MS Sans Serif", Arial, sans-serif;
+  font-family: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
   color: #000;
-  /* crisp pixel edges for the bundled font */
-  -webkit-font-smoothing: none;
-  font-smooth: never;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   user-select: none;
 }
 

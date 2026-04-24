@@ -1,7 +1,6 @@
 /**
  * SITE CONTENT — single source of truth.
  * Edit these values to personalize the portfolio.
- * Anything marked TODO should be replaced before showing the site publicly.
  */
 
 export type SocialLink = {
@@ -34,24 +33,21 @@ export type SiteConfig = {
 };
 
 export const site: SiteConfig = {
-  // TODO: replace with your real name
-  name: "Your Name",
-  handle: "you",
-  tagline: "Builder of small, strange, well-made software.",
-  role: "Developer · Designer · Occasional writer",
+  name: "Ravi Gupta",
+  handle: "ravi",
+  tagline: "MBA student · E-commerce builder · Based in Kyoto.",
+  role: "Shopify Manager · Founder · Developer",
   bio: [
     "Welcome to my personal computer.",
-    // TODO: rewrite these paragraphs to be about you
-    "Hi. I'm a developer who likes the texture of old computing — chunky buttons, fixed-width type, the reassuring sound of a hard drive seeking. This site is equal parts portfolio, journal, and personal dashboard.",
-    "By day I build web things. By night I'm usually listening to something on Spotify, halfway through a film on Letterboxd, or trying (and failing) to beat my last Hevy PR.",
-    "Double-click an icon on the desktop to open something. More modules coming soon.",
+    "I'm Ravi — currently doing my MBA at Doshisha Business School in Kyoto, Japan. Before that I ran a cloud kitchen startup, managed Shopify stores, and somehow found time to build a full-stack kanji learning app.",
+    "I like making things work on the internet. Open a window to see what I've been up to.",
   ],
-  email: "hello@example.com",
+  email: "raviigupta21@gmail.com",
   socials: [
-    { label: "GitHub", href: "https://github.com/", handle: "@you" },
-    { label: "Twitter", href: "https://twitter.com/", handle: "@you" },
+    { label: "GitHub", href: "https://github.com/sshawn18", handle: "@sshawn18" },
+    { label: "AniList", href: "https://anilist.co/user/SHAWN18", handle: "@SHAWN18" },
     { label: "Letterboxd", href: "https://letterboxd.com/SHAWN_18/", handle: "@SHAWN_18" },
-    { label: "Read.cv", href: "https://read.cv/", handle: "@you" },
+    { label: "KanjiLearn", href: "https://kanjilearn.vercel.app", handle: "kanjilearn.vercel.app" },
   ],
   credit: "Hand-built with Next.js + 98.css.",
   letterboxdUsername: "SHAWN_18",
