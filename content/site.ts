@@ -29,6 +29,8 @@ export type SiteConfig = {
   credit: string;
   /** Letterboxd username used by the Film Diary window. Public handle — not a secret. */
   letterboxdUsername: string;
+  /** AniList username used by the Anime List window. Public handle — not a secret. */
+  anilistUsername: string;
 };
 
 export const site: SiteConfig = {
@@ -53,4 +55,5 @@ export const site: SiteConfig = {
   ],
   credit: "Hand-built with Next.js + 98.css.",
   letterboxdUsername: "SHAWN_18",
+  anilistUsername: "SHAWN18",
 };

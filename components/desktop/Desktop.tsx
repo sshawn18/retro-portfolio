@@ -10,6 +10,7 @@ import {
   Mail,
   RecycleEmpty,
   Mplayer11,
+  Winmine1,
 } from "@react95/icons";
 import type { DesktopWindow, WindowId } from "@/lib/desktop-types";
 import { DesktopIcon } from "./DesktopIcon";
@@ -21,6 +22,7 @@ import { MyComputerWindow } from "./windows/MyComputerWindow";
 import { ContactWindow } from "./windows/ContactWindow";
 import { NowPlayingWindow } from "./windows/NowPlayingWindow";
 import { LetterboxdWindow } from "./windows/LetterboxdWindow";
+import { AnilistWindow } from "./windows/AnilistWindow";
 import { SoonWindow } from "./windows/SoonWindow";
 import { RecycleWindow } from "./windows/RecycleWindow";
 import { site } from "@/content/site";
@@ -97,6 +99,15 @@ const templates: Record<WindowId, Template> = {
     width: 480,
     content: <LetterboxdWindow />,
   },
+  anilist: {
+    id: "anilist",
+    title: "Anime List — AniList",
+    icon: "📺",
+    x: 280,
+    y: 100,
+    width: 500,
+    content: <AnilistWindow />,
+  },
   blog: {
     id: "blog",
     title: "Blog",
@@ -138,6 +149,7 @@ const iconOrder: { id: WindowId; label: string; glyph: ReactNode }[] = [
   { id: "projects",   label: "Projects",    glyph: <Folder   variant="32x32_4" style={iconStyle} /> },
   { id: "now",        label: "Now Playing", glyph: <CdMusic  variant="32x32_4" style={iconStyle} /> },
   { id: "letterboxd", label: "Film Diary",  glyph: <Mplayer11 variant="32x32_4" style={iconStyle} /> },
+  { id: "anilist",    label: "Anime List",  glyph: <Winmine1  variant="32x32_4" style={iconStyle} /> },
   { id: "blog",       label: "Blog",        glyph: <Wordpad  variant="32x32_4" style={iconStyle} /> },
   { id: "contact",    label: "Contact.exe", glyph: <Mail     variant="32x32_4" style={iconStyle} /> },
   { id: "recycle",    label: "Recycle Bin", glyph: <RecycleEmpty variant="32x32_4" style={iconStyle} /> },

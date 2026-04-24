@@ -7,6 +7,7 @@ export type WindowId =
   | "projects"
   | "now"
   | "letterboxd"
+  | "anilist"
   | "blog"
   | "contact"
   | "recycle";
