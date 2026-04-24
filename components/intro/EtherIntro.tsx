@@ -202,13 +202,6 @@ export function EtherIntro({ onDone }: Props) {
     if (reducedMotion) {
       setLines([
         { id: 1, text: "ETHER.BBS v0.1 — online", target: "", tone: "dim" },
-        {
-          id: 2,
-          text: `you@ether:~$ ${site.name}`,
-          target: "",
-          tone: "highlight",
-        },
-        { id: 3, text: site.tagline, target: "", tone: "accent" },
       ]);
       await sleep(1200);
       finish();
@@ -241,18 +234,7 @@ export function EtherIntro({ onDone }: Props) {
     );
     await beat(BEAT_PAUSE_MS * 1.4);
 
-    // Blank spacer before identity
-    appendLine({ text: " ", target: " ", tone: "dim" });
-    await sleep(500);
-
-    // Beat 3 — identity handshake. Same mojibake-reload mechanic,
-    // this time the decoded text IS you.
-    await revealMojibakeLine(site.name, "highlight", "you@ether:~$");
-    await sleep(400);
-    await typeSystemLine(site.tagline, "accent");
-    await beat(1600);
-
-    // Beat 4 — transition
+    // Beat 3 — transition
     await typeSystemLine("> starting desktop . . .", "dim");
     await sleep(900);
     finish();
