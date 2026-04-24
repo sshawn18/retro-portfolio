@@ -188,7 +188,7 @@ export async function getAnilistActivity(
         query: ACTIVITY_QUERY,
         variables: { userId, perPage: limit },
       }),
-      next: { revalidate: 600 }, // 10 min — activity updates more often
+      cache: "no-store", // always fetch fresh — this is a live feed
     });
 
     if (!res.ok) return { ...base, error: `anilist api ${res.status}` };

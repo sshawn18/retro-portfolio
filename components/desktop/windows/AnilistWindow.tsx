@@ -37,7 +37,7 @@ const STATUS_ORDER: AnilistStatus[] = [
 ];
 
 export function AnilistWindow() {
-  const [mediaType, setMediaType] = useState<MediaType>("ANIME");
+  const [mediaType, setMediaType] = useState<MediaType>("RECENT");
   const [status, setStatus] = useState<AnilistStatus>("CURRENT");
 
   const [animeData, setAnimeData] = useState<AnilistCollection | null>(null);
@@ -65,9 +65,9 @@ export function AnilistWindow() {
     return () => { cancelled = true; };
   }, [mediaType, listData, setListData]);
 
-  // Fetch activity feed
+  // Fetch activity feed — always load on mount, not just when tab is active
   useEffect(() => {
-    if (mediaType !== "RECENT" || activityData) return;
+    if (activityData) return;
     let cancelled = false;
     setLoading(true);
     (async () => {
@@ -80,7 +80,7 @@ export function AnilistWindow() {
       }
     })();
     return () => { cancelled = true; };
-  }, [mediaType, activityData]);
+  }, [activityData]);
 
   const currentList = listData?.lists.find((l) => l.status === status);
   const entries = currentList?.entries ?? [];
@@ -90,7 +90,7 @@ export function AnilistWindow() {
     <div className="text-[12px] leading-[1.5]">
       {/* Tab strip */}
       <menu role="tablist" className="flex gap-0 mb-2 list-none p-0">
-        {(["ANIME", "MANGA", "RECENT"] as MediaType[]).map((t) => (
+        {(["RECENT", "ANIME", "MANGA"] as MediaType[]).map((t) => (
           <TabButton
             key={t}
             active={mediaType === t}
@@ -98,7 +98,7 @@ export function AnilistWindow() {
               setMediaType(t);
               if (t !== "RECENT") setStatus("CURRENT");
             }}
-            label={t === "ANIME" ? "Anime" : t === "MANGA" ? "Manga" : "Recent"}
+            label={t === "RECENT" ? "Recent" : t === "ANIME" ? "Anime" : "Manga"}
           />
         ))}
       </menu>
