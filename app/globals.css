@@ -1,0 +1,184 @@
+@import "tailwindcss";
+@import "98.css/dist/98.css";
+
+/* ── Desktop tokens ─────────────────────────────────────────── */
+:root {
+  --desktop: #008080;           /* Classic Win98 teal */
+  --desktop-dark: #005f5f;
+  --desktop-icon-selected: rgba(0, 0, 128, 0.6);
+  --taskbar-bg: #c0c0c0;
+  --window-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* Desktop doesn't scroll — windows scroll internally */
+}
+
+body {
+  background-color: var(--desktop); /* fallback behind the photo */
+  /* Layered background:
+     1. tiny dot pattern on top for retro texture
+     2. subtle darkening veil so white desktop icons stay legible
+     3. the wallpaper photo itself (drop a file at /public/desktop-bg.jpg) */
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22)),
+    url("/desktop-bg.jpg");
+  background-size: 4px 4px, auto, cover;
+  background-position: 0 0, center, center;
+  background-repeat: repeat, no-repeat, no-repeat;
+  background-attachment: fixed, fixed, fixed;
+  font-family: "Pixelated MS Sans Serif", Arial, sans-serif;
+  color: #000;
+  /* crisp pixel edges for the bundled font */
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  user-select: none;
+}
+
+/* Selection (file select / text drag in windows) */
+::selection {
+  background: #000080;
+  color: #fff;
+}
+
+/* Allow text selection inside window bodies */
+.window-body,
+.window-body * {
+  user-select: text;
+}
+
+/* Disable tap-highlight on desktop */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── 98.css tweaks ──────────────────────────────────────────── */
+/* Make sure windows float above the desktop patterning */
+.window {
+  box-shadow: var(--window-shadow);
+}
+
+/* Ensure title-bar buttons render crisply */
+.title-bar-controls button {
+  min-width: 16px;
+  min-height: 14px;
+}
+
+/* Taskbar styling (our custom class) */
+.taskbar {
+  background: var(--taskbar-bg);
+  border-top: 1px solid #fff;
+  box-shadow: inset 0 1px 0 #dfdfdf;
+}
+
+/* Desktop icon: override 98.css global button chrome so the icons
+   float cleanly on the wallpaper without a grey bevel box. */
+.desktop-icon,
+.desktop-icon:focus,
+.desktop-icon:active,
+.desktop-icon:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 4px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  width: 84px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  color: #fff;
+  font-family: "Pixelated MS Sans Serif", Arial, sans-serif;
+  text-shadow:
+    1px 1px 0 #000,
+    -1px 0 0 #000,
+    0 -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    0 1px 2px rgba(0, 0, 0, 0.7);
+}
+.desktop-icon-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  line-height: 1;
+}
+.desktop-icon-label {
+  font-size: 11px;
+  line-height: 1.2;
+  text-align: center;
+  padding: 1px 3px;
+  max-width: 100%;
+  word-break: break-word;
+}
+.desktop-icon:focus,
+.desktop-icon[data-selected="true"] {
+  outline: none !important;
+}
+.desktop-icon:focus .desktop-icon-label,
+.desktop-icon[data-selected="true"] .desktop-icon-label {
+  background: var(--desktop-icon-selected);
+  outline: 1px dotted #fff;
+}
+.desktop-icon:focus .desktop-icon-img,
+.desktop-icon[data-selected="true"] .desktop-icon-img {
+  filter: brightness(0.85) saturate(1.2) hue-rotate(-10deg);
+}
+
+/* Start menu popup */
+.start-menu {
+  background: #c0c0c0;
+  border: 2px outset #fff;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
+}
+.start-menu-rail {
+  background: linear-gradient(to top, #808080, #000080);
+  color: #fff;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Taskbar window button — active state */
+.taskbar-btn[data-active="true"] {
+  border-style: inset;
+  background: #bdbdbd;
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.4) 1px,
+    transparent 1px
+  );
+  background-size: 2px 2px;
+}
+
+/* System-tray recessed well */
+.tray-well {
+  border: 1px solid;
+  border-color: #808080 #fff #fff #808080;
+  padding: 2px 6px;
+}
+
+/* Mobile: make desktop icons a little tighter */
+@media (max-width: 640px) {
+  .desktop-icons {
+    gap: 12px !important;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
