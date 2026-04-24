@@ -168,10 +168,21 @@ body {
   padding: 2px 6px;
 }
 
-/* Mobile: make desktop icons a little tighter */
+/* Mobile: tighter icons + swap wallpaper */
 @media (max-width: 640px) {
   .desktop-icons {
     gap: 12px !important;
+  }
+
+  body {
+    background-image:
+      radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22)),
+      url("/mobile-bg.jpg");
+    background-size: 4px 4px, auto, cover;
+    background-position: 0 0, center, center;
+    background-repeat: repeat, no-repeat, no-repeat;
+    background-attachment: fixed, fixed, fixed;
   }
 }
 
