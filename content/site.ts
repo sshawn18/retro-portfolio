@@ -22,6 +22,8 @@ export type SiteConfig = {
   bio: string[];
   /** Primary email for the Contact dialog */
   email: string;
+  /** LinkedIn profile URL */
+  linkedin: string;
   /** Socials listed in Contact.exe */
   socials: SocialLink[];
   /** Credit line — shown in Welcome window */
@@ -43,6 +45,8 @@ export const site: SiteConfig = {
     "I like making things work on the internet. Open a window to see what I've been up to.",
   ],
   email: "raviigupta21@gmail.com",
+  /** LinkedIn profile URL — update with your actual profile slug */
+  linkedin: "https://linkedin.com/in/ravi-gupta-TODO",
   socials: [
     { label: "GitHub", href: "https://github.com/sshawn18", handle: "@sshawn18" },
     { label: "AniList", href: "https://anilist.co/user/SHAWN18", handle: "@SHAWN18" },
