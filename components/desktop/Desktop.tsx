@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 import {
   Computer,
   Notepad,
@@ -173,6 +173,19 @@ export function Desktop() {
   const [focusedId, setFocusedId] = useState<WindowId | null>("welcome");
   const [selectedIconId, setSelectedIconId] = useState<WindowId | null>(null);
   const [startOpen, setStartOpen] = useState(false);
+
+  // Centre the welcome window on desktop after hydration.
+  // Mobile windows are already CSS-centred in Win98Window; this handles desktop.
+  useEffect(() => {
+    if (window.innerWidth < 640) return; // mobile handled by CSS
+    const w = templates.welcome.width;
+    const x = Math.round(Math.max(8, (window.innerWidth - w) / 2));
+    const y = Math.round(Math.max(8, (window.innerHeight - 380) / 3));
+    setWindows((prev) =>
+      prev.map((win) => (win.id === "welcome" ? { ...win, x, y } : win))
+    );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const nextZ = useCallback(() => {
     const max = windows.reduce((m, w) => Math.max(m, w.z), 0);
