@@ -21,7 +21,6 @@ type MenuItem = {
 const programs: MenuItem[] = [
   { id: "welcome",    label: "Welcome",      glyph: "👋" },
   { id: "portfolio",  label: "Portfolio.exe", glyph: "📋" },
-  { id: "projects",   label: "Projects",     glyph: "📁" },
   { id: "now",        label: "Now Playing",  glyph: "🎵" },
   { id: "letterboxd", label: "Film Diary",   glyph: "🎬" },
   { id: "anilist",    label: "Anime List",   glyph: "📺" },

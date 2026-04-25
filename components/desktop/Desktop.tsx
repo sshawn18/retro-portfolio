@@ -156,7 +156,6 @@ const templates: Record<WindowId, Template> = {
 const iconOrder: { id: WindowId; label: string; glyph: ReactNode }[] = [
   { id: "mycomputer", label: "My Computer", glyph: <Computer variant="32x32_4" style={iconStyle} /> },
   { id: "portfolio",  label: "Portfolio",   glyph: <span style={{ fontSize: 32, lineHeight: 1, display: "block", textAlign: "center" }}>📋</span> },
-  { id: "projects",   label: "Projects",    glyph: <Folder   variant="32x32_4" style={iconStyle} /> },
   { id: "now",        label: "Now Playing", glyph: <CdMusic  variant="32x32_4" style={iconStyle} /> },
   { id: "letterboxd", label: "Film Diary",  glyph: <Mplayer11 variant="32x32_4" style={iconStyle} /> },
   { id: "anilist",    label: "Anime List",  glyph: <Winmine1  variant="32x32_4" style={iconStyle} /> },
