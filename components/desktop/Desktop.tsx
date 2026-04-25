@@ -258,10 +258,18 @@ export function Desktop() {
       className="fixed inset-0 overflow-hidden"
       onMouseDown={() => setSelectedIconId(null)}
     >
-      {/* Desktop icons */}
+      {/* Desktop icons — 2-column grid so they never overflow vertically */}
       <div
-        className="desktop-icons absolute top-2 left-2 flex flex-col gap-3 z-[1]"
-        style={{ maxHeight: "calc(100vh - 48px)", overflowY: "auto", overflowX: "hidden" }}
+        className="desktop-icons absolute top-2 left-2 z-[1]"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 84px)",
+          gap: "8px",
+          alignContent: "start",
+          maxHeight: "calc(100vh - 48px)",
+          overflowY: "auto",
+          overflowX: "hidden",
+        }}
         onMouseDown={(e) => e.stopPropagation()}
       >
         {iconOrder.map((it) => (
