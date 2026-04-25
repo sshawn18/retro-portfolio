@@ -38,7 +38,7 @@ export const site: SiteConfig = {
   name: "Ravi Gupta",
   handle: "ravi",
   tagline: "Business Development & E-Commerce | Shopify, Digital Marketing & Workflow Automation | MBA - Doshisha, Japan | EN / HI / JP (N4)",
-  role: "Business Development & E-Commerce | Shopify, Digital Marketing & Workflow Automation | MBA - Doshisha, Japan | EN / HI / JP (N4)",
+  role: "Kyoto, Japan",
   bio: [
     "Welcome to my personal computer.",
     "I'm Ravi, currently doing my MBA at Doshisha Business School in Kyoto, Japan. Before that I ran a cloud kitchen startup, managed and made several ecommerce stores, and spent last few years selling things online.",

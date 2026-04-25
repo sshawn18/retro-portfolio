@@ -79,16 +79,16 @@ const projects = [
 
 const skillGroups = [
   {
-    label: "E-Commerce & Marketing",
-    skills: ["Shopify", "Google Ads", "SEO / SEM", "Canva", "Zomato / Swiggy listings"],
+    label: "E-Commerce & Business Development",
+    skills: ["Shopify (Store Setup, Themes, Apps)", "Google Ads / PPC", "SEO / SEM", "Digital Marketing", "Business Development", "Zomato / Swiggy Listings"],
   },
   {
-    label: "Development",
-    skills: ["Next.js", "TypeScript", "React", "PostgreSQL", "Vercel", "Git"],
+    label: "AI Tools & Automation",
+    skills: ["AI Fluency (ChatGPT, Claude, Gemini)", "AI Workflow Automation", "Zapier / Make (Integromat)", "Prompt Engineering", "AI Content & Copywriting", "AI-assisted Research"],
   },
   {
-    label: "Tools & Office",
-    skills: ["MS Office (Excel, Word, PowerPoint)", "WhatsApp Business API", "Notion"],
+    label: "Design & Productivity",
+    skills: ["Canva", "MS Office (Excel, Word, PowerPoint)", "WhatsApp Business API", "Notion"],
   },
   {
     label: "Languages",

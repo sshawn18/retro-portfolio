@@ -11,8 +11,12 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${site.name} — ${site.role}`,
+  title: `${site.name} — Portfolio`,
   description: site.tagline,
+  icons: {
+    // Classic 90s headphone emoji rendered as an SVG favicon
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>",
+  },
 };
 
 export default function RootLayout({
