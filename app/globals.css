@@ -55,6 +55,26 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* ── 98.css font override ───────────────────────────────────── */
+/* 98.css uses `* { font-family: "Pixelated MS Sans Serif" }` which
+   clobbers every element. Force IBM Plex Mono everywhere inside windows
+   so content is actually readable. Chrome/taskbar keep the pixel look
+   via their own explicit rules below. */
+.window-body,
+.window-body * {
+  font-family: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace !important;
+  -webkit-font-smoothing: antialiased !important;
+  font-size: 12px;
+}
+/* Form elements don't inherit font by default in some browsers */
+.window-body input,
+.window-body textarea,
+.window-body select,
+.window-body button {
+  font-family: inherit !important;
+  font-size: inherit !important;
+}
+
 /* ── 98.css tweaks ──────────────────────────────────────────── */
 /* Make sure windows float above the desktop patterning */
 .window {

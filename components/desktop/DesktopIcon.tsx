@@ -6,7 +6,6 @@ import type { WindowId } from "@/lib/desktop-types";
 type DesktopIconProps = {
   id: WindowId;
   label: string;
-  /** Pre-rendered icon element — typically a <SomeIcon variant="32x32_4" /> from @react95/icons */
   glyph: ReactNode;
   onOpen: (id: WindowId) => void;
   selected: boolean;
@@ -14,8 +13,7 @@ type DesktopIconProps = {
 };
 
 /**
- * Selectable + double-clickable desktop icon.
- * Single click (or Enter when focused) selects; double-click (or Space) opens.
+ * Desktop icon — single tap on touch, double-click on mouse.
  */
 export function DesktopIcon({
   id,
@@ -26,12 +24,28 @@ export function DesktopIcon({
   onSelect,
 }: DesktopIconProps) {
   const [lastClick, setLastClick] = useState(0);
+  // Track whether the last open came from touch so we can suppress
+  // the ghost click that browsers fire after touchend.
+  const touchOpenedRef = { current: false };
 
+  // ── Touch: open on single tap ────────────────────────────────
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    e.preventDefault(); // suppress the synthetic mouse click that follows
+    e.stopPropagation();
+    onSelect(id);
+    onOpen(id);
+  };
+
+  // ── Mouse: double-click to open, single click to select ──────
   const handleClick = (e: React.MouseEvent) => {
+    if (touchOpenedRef.current) {
+      touchOpenedRef.current = false;
+      return;
+    }
     e.stopPropagation();
     onSelect(id);
     const now = Date.now();
-    if (now - lastClick < 350) {
+    if (now - lastClick < 400) {
       onOpen(id);
       setLastClick(0);
     } else {
@@ -45,6 +59,7 @@ export function DesktopIcon({
       className="desktop-icon"
       data-selected={selected || undefined}
       onClick={handleClick}
+      onTouchEnd={handleTouchEnd}
       onDoubleClick={(e) => {
         e.stopPropagation();
         onOpen(id);
