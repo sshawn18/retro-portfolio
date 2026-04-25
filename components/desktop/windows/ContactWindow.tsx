@@ -5,12 +5,12 @@ const links: { icon: string; label: string; sub: string; href: string }[] = [
     icon: "📧",
     label: "Email",
     sub: site.email,
-    href: `mailto:${site.email}`,
+    href: `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(site.email)}`,
   },
   {
     icon: "💼",
     label: "LinkedIn",
-    sub: site.linkedin.replace("https://", ""),
+    sub: "linkedin.com/in/ravi-gupta-46a43a175",
     href: site.linkedin,
   },
   {
@@ -31,7 +31,7 @@ export function ContactWindow() {
             <a
               key={l.label}
               href={l.href}
-              target={l.href.startsWith("mailto") ? undefined : "_blank"}
+              target="_blank"
               rel="noreferrer"
               style={{ textDecoration: "none", display: "block" }}
             >
