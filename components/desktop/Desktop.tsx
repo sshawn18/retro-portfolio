@@ -261,6 +261,7 @@ export function Desktop() {
       {/* Desktop icons */}
       <div
         className="desktop-icons absolute top-2 left-2 flex flex-col gap-3 z-[1]"
+        style={{ maxHeight: "calc(100vh - 48px)", overflowY: "auto", overflowX: "hidden" }}
         onMouseDown={(e) => e.stopPropagation()}
       >
         {iconOrder.map((it) => (

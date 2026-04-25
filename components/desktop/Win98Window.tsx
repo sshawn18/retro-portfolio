@@ -93,16 +93,16 @@ export function Win98Window({
 
   if (minimized) return null;
 
-  // Mobile: near-fullscreen, centered, no drag, taskbar-aware margin
+  // Mobile: hug content height (no forced bottom stretch), cap before taskbar
   const positionStyle = isMobile
     ? {
         top: 8,
         left: 8,
         right: 8,
-        bottom: 44,
         width: "auto",
-        height: "auto",
+        maxHeight: "calc(100vh - 52px)", // taskbar(36) + top margin(8) + gap(8)
         zIndex: z,
+        overflow: "hidden",
       }
     : {
         top: y,
@@ -156,7 +156,7 @@ export function Win98Window({
       </div>
       <div
         className="window-body overflow-auto"
-        style={{ maxHeight: isMobile ? "calc(100vh - 92px)" : undefined }}
+        style={{ maxHeight: isMobile ? "calc(100vh - 90px)" : undefined }}
       >
         {children}
       </div>
