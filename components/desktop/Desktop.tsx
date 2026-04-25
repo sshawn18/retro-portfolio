@@ -167,9 +167,15 @@ const iconOrder: { id: WindowId; label: string; glyph: ReactNode }[] = [
 /* ── Component ─────────────────────────────────────────────── */
 
 export function Desktop() {
+  // Snap window position to top-left on small screens so it's never off-canvas.
+  const mobilePos = (tmpl: Template) =>
+    typeof window !== "undefined" && window.innerWidth < 640
+      ? { ...tmpl, x: 8, y: 8 }
+      : tmpl;
+
   // Welcome window open by default so the page has presence on first load.
   const [windows, setWindows] = useState<DesktopWindow[]>(() => [
-    { ...templates.welcome, z: 1, minimized: false },
+    { ...mobilePos(templates.welcome), z: 1, minimized: false },
   ]);
   const [focusedId, setFocusedId] = useState<WindowId | null>("welcome");
   const [selectedIconId, setSelectedIconId] = useState<WindowId | null>(null);
@@ -193,7 +199,7 @@ export function Desktop() {
         }
         return [
           ...prev,
-          { ...templates[id], z: topZ, minimized: false },
+          { ...mobilePos(templates[id]), z: topZ, minimized: false },
         ];
       });
       setFocusedId(id);

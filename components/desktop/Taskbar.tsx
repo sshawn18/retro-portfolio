@@ -72,19 +72,21 @@ export function Taskbar({
 
       <Sep />
 
-      {/* Open windows */}
+      {/* Open windows — icon only on mobile, icon+label on desktop */}
       <div className="flex-1 flex items-center gap-1 overflow-x-auto">
         {windows.map((w) => (
           <button
             key={w.id}
             type="button"
-            className="taskbar-btn flex items-center gap-1.5 h-7 px-2 text-[12px] min-w-0 max-w-[180px]"
+            className="taskbar-btn flex items-center justify-center gap-1 h-7 text-[12px] min-w-0"
+            style={{ padding: "0 6px" }}
             data-active={focusedId === w.id && !w.minimized ? "true" : undefined}
             onClick={() => onTaskClick(w.id)}
             title={w.title}
           >
-            <span aria-hidden className="text-[14px] leading-none">{w.icon}</span>
-            <span className="truncate">{w.title}</span>
+            <span aria-hidden className="text-[16px] leading-none flex-shrink-0">{w.icon}</span>
+            {/* Label hidden on small screens */}
+            <span className="truncate hidden sm:inline max-w-[120px]">{w.title}</span>
           </button>
         ))}
       </div>
