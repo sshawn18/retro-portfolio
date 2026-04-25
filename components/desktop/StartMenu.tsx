@@ -19,17 +19,15 @@ type MenuItem = {
 };
 
 const programs: MenuItem[] = [
-  { id: "welcome", label: "Welcome", glyph: "👋" },
-  { id: "portfolio", label: "Portfolio.exe", glyph: "📋" },
-  { id: "about", label: "About.txt", glyph: "📄" },
-  { id: "projects", label: "Projects", glyph: "📁" },
-  { id: "now", label: "Now Playing", glyph: "🎵" },
-  { id: "letterboxd", label: "Film Diary",  glyph: "🎬" },
-  { id: "anilist",    label: "Anime List",  glyph: "📺" },
-  { id: "blog",       label: "Blog",        glyph: "📰" },
+  { id: "welcome",    label: "Welcome",      glyph: "👋" },
+  { id: "portfolio",  label: "Portfolio.exe", glyph: "📋" },
+  { id: "projects",   label: "Projects",     glyph: "📁" },
+  { id: "now",        label: "Now Playing",  glyph: "🎵" },
+  { id: "letterboxd", label: "Film Diary",   glyph: "🎬" },
+  { id: "anilist",    label: "Anime List",   glyph: "📺" },
   { divider: true, label: "", glyph: "" },
-  { id: "contact", label: "Contact.exe", glyph: "✉️" },
-  { id: "mycomputer", label: "My Computer", glyph: "🖥️" },
+  { id: "contact",    label: "Contact.exe",  glyph: "✉️" },
+  { id: "mycomputer", label: "My Computer",  glyph: "🖥️" },
 ];
 
 export function StartMenu({ open, onClose, onOpenWindow }: StartMenuProps) {
