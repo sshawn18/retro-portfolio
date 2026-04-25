@@ -166,11 +166,14 @@ const iconOrder: { id: WindowId; label: string; glyph: ReactNode }[] = [
 /* ── Component ─────────────────────────────────────────────── */
 
 export function Desktop() {
-  // Welcome window open by default so the page has presence on first load.
-  const [windows, setWindows] = useState<DesktopWindow[]>(() => [
-    { ...templates.welcome, z: 1, minimized: false },
-  ]);
-  const [focusedId, setFocusedId] = useState<WindowId | null>("welcome");
+  // Welcome window open by default on desktop only — phones start with a clean desktop.
+  const [windows, setWindows] = useState<DesktopWindow[]>(() => {
+    if (typeof window !== "undefined" && window.innerWidth < 640) return [];
+    return [{ ...templates.welcome, z: 1, minimized: false }];
+  });
+  const [focusedId, setFocusedId] = useState<WindowId | null>(
+    typeof window !== "undefined" && window.innerWidth < 640 ? null : "welcome"
+  );
   const [selectedIconId, setSelectedIconId] = useState<WindowId | null>(null);
   const [startOpen, setStartOpen] = useState(false);
 
