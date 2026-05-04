@@ -23,6 +23,7 @@ import { ContactWindow } from "./windows/ContactWindow";
 import { NowPlayingWindow } from "./windows/NowPlayingWindow";
 import { LetterboxdWindow } from "./windows/LetterboxdWindow";
 import { AnilistWindow } from "./windows/AnilistWindow";
+import { HevyWindow } from "./windows/HevyWindow";
 import { PortfolioWindow } from "./windows/PortfolioWindow";
 import { SoonWindow } from "./windows/SoonWindow";
 import { RecycleWindow } from "./windows/RecycleWindow";
@@ -151,6 +152,15 @@ const templates: Record<WindowId, Template> = {
     width: 520,
     content: <PortfolioWindow />,
   },
+  hevy: {
+    id: "hevy",
+    title: "Gym Log — Hevy",
+    icon: "💪",
+    x: 300,
+    y: 120,
+    width: 460,
+    content: <HevyWindow />,
+  },
 };
 
 const iconOrder: { id: WindowId; label: string; glyph: ReactNode }[] = [
@@ -159,6 +169,7 @@ const iconOrder: { id: WindowId; label: string; glyph: ReactNode }[] = [
   { id: "now",        label: "Now Playing", glyph: <CdMusic  variant="32x32_4" style={iconStyle} /> },
   { id: "letterboxd", label: "Film Diary",  glyph: <Mplayer11 variant="32x32_4" style={iconStyle} /> },
   { id: "anilist",    label: "Anime List",  glyph: <Winmine1  variant="32x32_4" style={iconStyle} /> },
+  { id: "hevy",       label: "Gym Log",     glyph: <span style={{ fontSize: 32, lineHeight: 1, display: "block", textAlign: "center" }}>💪</span> },
   { id: "contact",    label: "Contact.exe", glyph: <Mail     variant="32x32_4" style={iconStyle} /> },
   { id: "recycle",    label: "Recycle Bin", glyph: <RecycleEmpty variant="32x32_4" style={iconStyle} /> },
 ];

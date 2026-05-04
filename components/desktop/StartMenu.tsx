@@ -24,6 +24,7 @@ const programs: MenuItem[] = [
   { id: "now",        label: "Now Playing",  glyph: "🎵" },
   { id: "letterboxd", label: "Film Diary",   glyph: "🎬" },
   { id: "anilist",    label: "Anime List",   glyph: "📺" },
+  { id: "hevy",       label: "Gym Log",      glyph: "💪" },
   { divider: true, label: "", glyph: "" },
   { id: "contact",    label: "Contact.exe",  glyph: "✉️" },
   { id: "mycomputer", label: "My Computer",  glyph: "🖥️" },

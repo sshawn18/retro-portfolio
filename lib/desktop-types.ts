@@ -11,7 +11,8 @@ export type WindowId =
   | "blog"
   | "contact"
   | "recycle"
-  | "portfolio";
+  | "portfolio"
+  | "hevy";
 
 export type DesktopWindow = {
   id: WindowId;
