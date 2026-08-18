@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/content/site";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
@@ -19,6 +20,9 @@ export const metadata: Metadata = {
   },
 };
 
+/** GA4 measurement ID — public by design (visible in page source). */
+const GA_ID = "G-8NKP2BTF1V";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`h-full ${plexMono.variable}`}>
       <body className="h-full">{children}</body>
+      {process.env.NODE_ENV === "production" ? <GoogleAnalytics gaId={GA_ID} /> : null}
     </html>
   );
 }
