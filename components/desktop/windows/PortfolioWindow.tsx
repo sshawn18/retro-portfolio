@@ -8,48 +8,60 @@ type Tab = "experience" | "education" | "projects" | "skills";
 
 /* ── Data ───────────────────────────────────────────────────── */
 
-const experience = [
+/** Bullets are [bold lead, text] pairs, as on the resume. */
+const experience: {
+  title: string;
+  org: string;
+  period: string;
+  location: string;
+  bullets: [string, string][];
+}[] = [
   {
-    title: "Freelance E-Commerce & Shopify Manager",
-    org: "Self-employed",
-    period: "Jan 2021 – Present",
-    location: "Remote",
+    title: "Digital Marketing & Operations Contractor",
+    org: "Matcha Tourism",
+    period: "Sep 2026 – Present",
+    location: "Kyoto, Japan",
     bullets: [
-      "Manage Shopify storefronts end-to-end — theme customisation, product listings, apps & integrations.",
-      "Run Google Ads and SEO campaigns; drive measurable revenue growth for clients.",
-      "Handle inventory, supplier coordination and day-to-day operations for multiple stores.",
+      ["Direct-channel strategy", "Moved bookings from third-party OTAs to the company's own website through direct-channel advertising, saving JPY 12,000 in OTA commission per booking."],
+      ["OTA channel optimization", "Reviewed listings across multiple OTA channels to improve reach."],
+      ["KPI and campaign reporting", "Produce regular reports for management on channel results, conversion and marketing campaign outcomes using Google Analytics."],
+      ["AI-assisted development", "Built a custom WordPress booking plugin with Claude Code to replace JTB Bokun for website bookings."],
     ],
   },
   {
-    title: "Founder & Operations Manager",
-    org: "Cloud Kitchen Startup",
+    title: "Founder",
+    org: "Homemade Paratha (Cloud Kitchen)",
     period: "May 2023 – Aug 2024",
-    location: "Delhi, India",
+    location: "New Delhi, India",
     bullets: [
-      "Launched and operated a cloud kitchen from scratch, reaching 500+ orders.",
-      "Managed full P&L, kitchen staff, delivery logistics, and customer service.",
-      "Built ordering flow using WhatsApp Business and Zomato / Swiggy listings.",
+      ["Customer acquisition", "Built customer acquisition from zero through Swiggy and Zomato promotions and social media advertising; scaled to 500+ orders and INR 200,000 per month at peak."],
+      ["Social media and paid advertising", "Ran social media marketing and paid advertising campaigns and managed the promotional calendar and pricing."],
+      ["Operations and retention", "Managed end-to-end operations, product and menu management and customer retention."],
+      ["Vendor negotiation", "Negotiated with vendors and suppliers to control costs and supply."],
     ],
   },
   {
-    title: "Customer Support Coordinator",
-    org: "Snackat — UAE",
+    title: "Business Development Associate",
+    org: "Snackat",
     period: "Feb 2021 – Oct 2023",
-    location: "Remote",
+    location: "Delhi, India · Remote",
     bullets: [
-      "First point of contact for customer queries across email, chat, and social channels.",
-      "Collaborated with operations team to resolve order issues and improve SLA.",
+      ["Client outreach", "Managed a 25-client portfolio for a UAE-based consumer brand over 2.5 years, including email outreach and client relationships."],
+      ["Email marketing and CRM", "Developed and ran marketing and email campaigns and managed customer relationships (CRM)."],
+      ["Market research and lead generation", "Researched client and market sectors to identify new leads; presented findings to management in monthly reports."],
+      ["E-commerce operations", "Managed the product catalogue, listings and daily e-commerce website operations."],
+      ["Cross-functional work", "Worked cross-functionally with other teams across the business on client, marketing and website work."],
     ],
   },
 ];
 
 const education = [
   {
-    degree: "MBA — Master of Business Administration",
+    degree: "MBA — Global Business and Management",
     school: "Doshisha Business School",
     location: "Kyoto, Japan",
     period: "2024 – 2026",
-    detail: "GPA 3.6 / 4.0  ·  Focus: International Business & Entrepreneurship",
+    detail: "GPA 3.6 / 4.0",
   },
   {
     degree: "BCom Honours — Commerce",
@@ -60,39 +72,90 @@ const education = [
   },
 ];
 
-const projects = [
+const statusColors: Record<string, string> = {
+  Live: "#008000",
+  Freelance: "#000080",
+  Internship: "#808080",
+};
+
+const projects: {
+  name: string;
+  url?: string;
+  meta: string;
+  desc: string;
+  status: keyof typeof statusColors;
+}[] = [
+  {
+    name: "Otakustitch",
+    meta: "Website & E-Commerce Manager · Nov 2022 – Present · Remote, UAE-based brand",
+    desc: "Built the brand's Shopify store from scratch for a business with no prior online presence. Ran SEO, social media, email and paid campaigns (Google Ads, Meta Ads, X Ads) as a one-person team, growing annual revenue from $20K to $110K in the first year and expanding online sales into the USA and Europe. Used GA4 for store analytics and AI tools (Claude Code, Codex) for custom automation and site features.",
+    status: "Freelance",
+  },
+  {
+    name: "Kats Footwear",
+    meta: "E-Commerce & SEO Consultant · Mar 2024 – Present · Remote",
+    desc: "Rebuilt an underperforming Shopify store for a footwear brand selling through retail and B2B channels. SEO improvements, content strategy and promotional campaigns doubled organic traffic (+100%) in 2 months; ran paid campaigns and tracked performance in GA4.",
+    status: "Freelance",
+  },
   {
     name: "KanjiLearn",
     url: "https://kanjilearn.vercel.app",
-    stack: "Next.js · TypeScript · PostgreSQL · AI",
+    meta: "Next.js · TypeScript · PostgreSQL · AI",
     desc: "Full-stack spaced-repetition system (SRS) for learning Japanese kanji. Built entirely with Claude AI assistance. Features adaptive review scheduling, stroke-order animations, and progress tracking.",
     status: "Live",
   },
   {
     name: "retro-portfolio",
     url: "https://raviguptacc.vercel.app",
-    stack: "Next.js · TypeScript · 98.css · Tailwind",
+    meta: "Next.js · TypeScript · 98.css · Tailwind",
     desc: "This site! A Windows 98-style personal desktop with live Spotify, Letterboxd, and AniList integrations. Draggable windows, Start menu, and CRT intro screen.",
     status: "Live",
   },
+  {
+    name: "OTA & Reservations Intern",
+    meta: "Matcha Tourism · Jan 2026 – Feb 2026 · Kyoto, Japan",
+    desc: "Assisted market research and planning for the company's new luxury tourism package priced at JPY 1 million, and coordinated with the creative, planning and finance teams.",
+    status: "Internship",
+  },
+  {
+    name: "HR Intern",
+    meta: "ONE DEJIMA · Nagasaki, Japan",
+    desc: "Designed and pitched a candidate-outreach framework with a cross-functional team; the proposal ranked 1st among all teams.",
+    status: "Internship",
+  },
+];
+
+const certifications = [
+  "Business Analysis and Process Management",
+  "Shopify E-Commerce",
+  "Mailchimp Email Marketing (2023)",
+  "JLPT N4",
 ];
 
 const skillGroups = [
   {
-    label: "E-Commerce & Business Development",
-    skills: ["Shopify", "WordPress", "BigCommerce", "Wix", "Google Ads", "Email Marketing", "SEO / SEM", "Digital Marketing", "Business Development"],
+    label: "Marketing",
+    skills: ["Digital Marketing", "SEO", "Paid Advertising", "Google Ads (SEM)", "Meta Ads", "X (Twitter) Ads", "Social Media Marketing", "Email Marketing", "Mailchimp", "Content Strategy", "A/B Testing", "Campaign Management", "Customer Acquisition", "PR & Events Support"],
   },
   {
-    label: "AI Tools & Automation",
-    skills: ["AI Fluency (ChatGPT, Claude, Gemini)", "AI Workflow Automation", "Zapier"],
+    label: "Analytics & Research",
+    skills: ["Google Analytics (GA4)", "KPI Reporting", "Marketing Analytics", "Market Research", "International Market Expansion"],
+  },
+  {
+    label: "E-Commerce & Operations",
+    skills: ["Shopify", "WordPress", "E-Commerce Operations", "CRM Software", "Client Relationships", "Cross-functional Collaboration", "Cross-team Coordination"],
+  },
+  {
+    label: "AI & Automation",
+    skills: ["Claude Code", "Claude", "ChatGPT", "AI-assisted Development", "Workflow Automation"],
   },
   {
     label: "Design & Productivity",
-    skills: ["Canva", "MS Office (Excel, Word, PowerPoint)", "Notion"],
+    skills: ["Canva", "MS Office"],
   },
   {
     label: "Languages",
-    skills: ["English (Fluent)", "Hindi (Native)", "Japanese (JLPT N4)"],
+    skills: ["English (Fluent)", "Hindi (Native)", "Japanese (JLPT N4, preparing for N3)"],
   },
 ];
 
@@ -181,7 +244,7 @@ export function PortfolioWindow() {
           RAVI GUPTA
         </div>
         <div style={{ fontSize: 11, opacity: 0.85, marginTop: 2 }}>
-          MBA Student · Shopify Manager · Developer
+          MBA Graduate · E-Commerce &amp; Digital Marketing · Developer
         </div>
         <div style={{ fontSize: 10, opacity: 0.65, marginTop: 4 }}>
           📍 Kyoto, Japan &nbsp;·&nbsp; ✉️{" "}
@@ -265,10 +328,10 @@ export function PortfolioWindow() {
                   {job.period} · {job.location}
                 </div>
                 <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
-                  {job.bullets.map((b, j) => (
+                  {job.bullets.map(([lead, text], j) => (
                     <li key={j} style={{ fontSize: 11, marginBottom: 3 }}>
                       <Dot />
-                      {b}
+                      <b>{lead}:</b> {text}
                     </li>
                   ))}
                 </ul>
@@ -319,16 +382,34 @@ export function PortfolioWindow() {
               </div>
               <div style={{ fontSize: 11, opacity: 0.85 }}>
                 <Dot />
-                Year 1 of MBA at Doshisha Business School
+                Digital marketing &amp; operations at Matcha Tourism, Kyoto
               </div>
               <div style={{ fontSize: 11, opacity: 0.85 }}>
                 <Dot />
-                Studying Japanese — sitting JLPT N3 this December
+                Studying Japanese — preparing for JLPT N3
               </div>
               <div style={{ fontSize: 11, opacity: 0.85 }}>
                 <Dot />
-                Building KanjiLearn and freelancing on the side
+                Building KanjiLearn and freelancing for Otakustitch &amp; Kats Footwear
               </div>
+            </div>
+            {/* Certifications section */}
+            <div
+              style={{
+                marginTop: 16,
+                paddingTop: 12,
+                borderTop: "1px dashed #c0c0c0",
+              }}
+            >
+              <div style={{ fontWeight: 700, fontSize: 11, marginBottom: 4 }}>
+                📜 Certifications
+              </div>
+              {certifications.map((c, i) => (
+                <div key={i} style={{ fontSize: 11, opacity: 0.85 }}>
+                  <Dot />
+                  {c}
+                </div>
+              ))}
             </div>
           </SectionBox>
         )}
@@ -353,24 +434,28 @@ export function PortfolioWindow() {
                     marginBottom: 2,
                   }}
                 >
-                  <a
-                    href={p.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{
-                      fontWeight: 700,
-                      fontSize: 13,
-                      color: "#000080",
-                      textDecoration: "underline",
-                    }}
-                  >
-                    {p.name}
-                  </a>
+                  {p.url ? (
+                    <a
+                      href={p.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{
+                        fontWeight: 700,
+                        fontSize: 13,
+                        color: "#000080",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      {p.name}
+                    </a>
+                  ) : (
+                    <span style={{ fontWeight: 700, fontSize: 13 }}>{p.name}</span>
+                  )}
                   <span
                     style={{
                       fontSize: 9,
                       padding: "1px 5px",
-                      background: "#008000",
+                      background: statusColors[p.status],
                       color: "#fff",
                       letterSpacing: "0.05em",
                     }}
@@ -379,7 +464,7 @@ export function PortfolioWindow() {
                   </span>
                 </div>
                 <div style={{ fontSize: 10, opacity: 0.6, marginBottom: 5 }}>
-                  {p.stack}
+                  {p.meta}
                 </div>
                 <div style={{ fontSize: 11, opacity: 0.9, lineHeight: 1.5 }}>
                   {p.desc}

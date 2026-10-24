@@ -37,11 +37,12 @@ export type SiteConfig = {
 export const site: SiteConfig = {
   name: "Ravi Gupta",
   handle: "ravi",
-  tagline: "Business Development & E-Commerce | Shopify, Digital Marketing & Workflow Automation | MBA - Doshisha, Japan | EN / HI / JP (N4)",
+  tagline: "Digital Marketing & E-Commerce | Shopify, SEO, Paid Ads & AI Workflow Automation | MBA - Doshisha, Japan | EN / HI / JP (N4)",
   role: "Kyoto, Japan",
   bio: [
     "Welcome to my personal computer.",
-    "I'm Ravi, currently doing my MBA at Doshisha Business School in Kyoto, Japan. Before that I ran a cloud kitchen startup, managed and made several ecommerce stores, and spent last few years selling things online.",
+    "I'm Ravi, a marketing and e-commerce professional based in Kyoto, Japan. I just finished my MBA at Doshisha Business School and now work on digital marketing and operations at Matcha Tourism.",
+    "In 3+ years across India, the UAE and Japan I've taken a Shopify brand from $20K to $110K in annual revenue in its first year, and ran a cloud kitchen in New Delhi that scaled to 500+ orders. I also build AI-assisted automations with Claude Code.",
     "I like to create and make things work. Open a window to see what I've been up to.",
   ],
   email: "raviigupta21@gmail.com",
