@@ -74,6 +74,7 @@ const education = [
 
 const statusColors: Record<string, string> = {
   Live: "#008000",
+  "In progress": "#808000",
   Freelance: "#000080",
   Internship: "#808080",
 };
@@ -110,6 +111,12 @@ const projects: {
     meta: "Next.js · TypeScript · 98.css · Tailwind",
     desc: "This site! A Windows 98-style personal desktop with live Spotify, Letterboxd, and AniList integrations. Draggable windows, Start menu, and CRT intro screen.",
     status: "Live",
+  },
+  {
+    name: "FilterCam",
+    meta: "Android · Kotlin · Jetpack Compose · CameraX · OpenGL ES",
+    desc: "A native Android camera app with hand-tuned filters. A GPU shader gives a live filtered preview and processes the saved photos, and you can tune, import, rename, share and export your own filters. The first preset, Jade, is a green film look with warm skin tones.",
+    status: "In progress",
   },
   {
     name: "OTA & Reservations Intern",
