@@ -14,8 +14,10 @@ export type SiteConfig = {
   name: string;
   /** Short handle — shown in Start menu and window titles */
   handle: string;
-  /** Single-line tagline */
+  /** Single-line professional tagline — used for the page meta description */
   tagline: string;
+  /** Main title shown in bold in the Welcome window */
+  headline: string;
   /** Short role / location line */
   role: string;
   /** Paragraphs in the About.txt / Welcome window */
@@ -40,6 +42,7 @@ export const site: SiteConfig = {
   name: "Ravi Gupta",
   handle: "ravi",
   tagline: "Digital Marketing & E-Commerce | Shopify, SEO, Paid Ads & AI Workflow Automation | MBA - Doshisha, Japan | EN / HI / JP (N4)",
+  headline: "An individual who wants to try all sports and forms of media",
   role: "Kyoto, Japan",
   bio: [
     "Welcome to my personal computer.",

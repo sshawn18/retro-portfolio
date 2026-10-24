@@ -10,7 +10,7 @@ export function AboutWindow() {
             📄
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-bold">{site.tagline}</p>
+            <p className="font-bold">{site.headline}</p>
             <p className="text-[11px] opacity-80 mt-0.5">{site.role}</p>
           </div>
         </div>
