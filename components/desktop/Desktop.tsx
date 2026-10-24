@@ -182,8 +182,13 @@ export function Desktop() {
   useEffect(() => {
     if (window.innerWidth < 640) return; // mobile handled by CSS
     const w = templates.welcome.width;
+    // Use the window's real height so a longer bio never ends up behind the taskbar.
+    const h =
+      document.querySelector<HTMLElement>('[role="dialog"][aria-label="Welcome"]')
+        ?.offsetHeight ?? 380;
     const x = Math.round(Math.max(8, (window.innerWidth - w) / 2));
-    const y = Math.round(Math.max(8, (window.innerHeight - 380) / 3));
+    // 52px keeps clear of the taskbar.
+    const y = Math.round(Math.max(8, (window.innerHeight - 52 - h) / 3));
     setWindows((prev) =>
       prev.map((win) => (win.id === "welcome" ? { ...win, x, y } : win))
     );
