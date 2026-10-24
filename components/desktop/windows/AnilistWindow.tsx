@@ -29,8 +29,8 @@ const STATUS_LABELS: Record<"ANIME" | "MANGA", Record<AnilistStatus, string>> = 
 };
 
 const STATUS_ORDER: AnilistStatus[] = [
-  "CURRENT",
   "COMPLETED",
+  "CURRENT",
   "PLANNING",
   "PAUSED",
   "DROPPED",
@@ -38,7 +38,7 @@ const STATUS_ORDER: AnilistStatus[] = [
 
 export function AnilistWindow() {
   const [mediaType, setMediaType] = useState<MediaType>("RECENT");
-  const [status, setStatus] = useState<AnilistStatus>("CURRENT");
+  const [status, setStatus] = useState<AnilistStatus>(STATUS_ORDER[0]);
 
   const [animeData, setAnimeData] = useState<AnilistCollection | null>(null);
   const [mangaData, setMangaData] = useState<AnilistCollection | null>(null);
@@ -96,7 +96,7 @@ export function AnilistWindow() {
             active={mediaType === t}
             onClick={() => {
               setMediaType(t);
-              if (t !== "RECENT") setStatus("CURRENT");
+              if (t !== "RECENT") setStatus(STATUS_ORDER[0]);
             }}
             label={t === "RECENT" ? "Recent" : t === "ANIME" ? "Anime" : "Manga"}
           />
@@ -127,13 +127,11 @@ export function AnilistWindow() {
                   id="anilist-status"
                   value={status}
                   onChange={(e) => setStatus(e.target.value as AnilistStatus)}
+                  // No background/padding/border overrides: they wipe out the
+                  // dropdown arrow that 98.css draws as a background image.
                   style={{
                     fontFamily: "inherit",
                     fontSize: 11,
-                    padding: "1px 4px",
-                    border: "1px solid",
-                    borderColor: "#808080 #fff #fff #808080",
-                    background: "#fff",
                     cursor: "pointer",
                   }}
                 >

@@ -72,63 +72,82 @@ const education = [
   },
 ];
 
-const statusColors: Record<string, string> = {
+const statusColors = {
   Live: "#008000",
   "In progress": "#808000",
-  Freelance: "#000080",
-  Internship: "#808080",
-};
+} as const;
 
-const projects: {
+type Project = {
   name: string;
   url?: string;
   meta: string;
   desc: string;
-  status: keyof typeof statusColors;
-}[] = [
+  /** Only personal projects carry a status badge. */
+  status?: keyof typeof statusColors;
+};
+
+const projectSections: { label: string; items: Project[] }[] = [
   {
-    name: "Otakustitch",
-    meta: "Website & E-Commerce Manager · Nov 2022 – Present · Remote, UAE-based brand",
-    desc: "Built the brand's Shopify store from scratch for a business with no prior online presence. Ran SEO, social media, email and paid campaigns (Google Ads, Meta Ads, X Ads) as a one-person team, growing annual revenue from $20K to $110K in the first year and expanding online sales into the USA and Europe. Used GA4 for store analytics and AI tools (Claude Code, Codex) for custom automation and site features.",
-    status: "Freelance",
+    label: "Freelance",
+    items: [
+      {
+        name: "Otakustitch",
+        meta: "Website & E-Commerce Manager · Nov 2022 – Present · Remote, UAE-based brand",
+        desc: "Built the brand's Shopify store from scratch for a business with no prior online presence. Ran SEO, social media, email and paid campaigns (Google Ads, Meta Ads, X Ads) as a one-person team, growing annual revenue from $20K to $110K in the first year and expanding online sales into the USA and Europe. Used GA4 for store analytics and AI tools (Claude Code, Codex) for custom automation and site features.",
+      },
+      {
+        name: "Kats Footwear",
+        meta: "E-Commerce & SEO Consultant · Mar 2024 – Present · Remote",
+        desc: "Rebuilt an underperforming Shopify store for a footwear brand selling through retail and B2B channels. SEO improvements, content strategy and promotional campaigns doubled organic traffic (+100%) in 2 months; ran paid campaigns and tracked performance in GA4.",
+      },
+    ],
   },
   {
-    name: "Kats Footwear",
-    meta: "E-Commerce & SEO Consultant · Mar 2024 – Present · Remote",
-    desc: "Rebuilt an underperforming Shopify store for a footwear brand selling through retail and B2B channels. SEO improvements, content strategy and promotional campaigns doubled organic traffic (+100%) in 2 months; ran paid campaigns and tracked performance in GA4.",
-    status: "Freelance",
+    label: "Personal projects",
+    items: [
+      {
+        name: "KanjiLearn",
+        url: "https://kanjilearn.vercel.app",
+        meta: "Next.js · TypeScript · PostgreSQL · AI",
+        desc: "Full-stack spaced-repetition system (SRS) for learning Japanese kanji. Built entirely with Claude AI assistance. Features adaptive review scheduling, stroke-order animations, and progress tracking.",
+        status: "Live",
+      },
+      {
+        name: "CashBook",
+        url: "https://cashbook-app-one.vercel.app",
+        meta: "React · Vite · Tailwind CSS · Express · PostgreSQL (Neon)",
+        desc: "A mobile-first cash flow tracker for small businesses and freelancers. Record a cash entry in under 5 seconds, with multiple books, a parties ledger, categories, reports and data backup. Email and password accounts with JWT, and every book is scoped to its owner.",
+        status: "Live",
+      },
+      {
+        name: "retro-portfolio",
+        url: "https://raviguptacc.vercel.app",
+        meta: "Next.js · TypeScript · 98.css · Tailwind",
+        desc: "This site! A Windows 98-style personal desktop with live Spotify, Letterboxd, and AniList integrations. Draggable windows, Start menu, and CRT intro screen.",
+        status: "Live",
+      },
+      {
+        name: "FilterCam",
+        meta: "Android · Kotlin · Jetpack Compose · CameraX · OpenGL ES",
+        desc: "A native Android camera app with hand-tuned filters. A GPU shader gives a live filtered preview and processes the saved photos, and you can tune, import, rename, share and export your own filters. The first preset, Jade, is a green film look with warm skin tones.",
+        status: "In progress",
+      },
+    ],
   },
   {
-    name: "KanjiLearn",
-    url: "https://kanjilearn.vercel.app",
-    meta: "Next.js · TypeScript · PostgreSQL · AI",
-    desc: "Full-stack spaced-repetition system (SRS) for learning Japanese kanji. Built entirely with Claude AI assistance. Features adaptive review scheduling, stroke-order animations, and progress tracking.",
-    status: "Live",
-  },
-  {
-    name: "retro-portfolio",
-    url: "https://raviguptacc.vercel.app",
-    meta: "Next.js · TypeScript · 98.css · Tailwind",
-    desc: "This site! A Windows 98-style personal desktop with live Spotify, Letterboxd, and AniList integrations. Draggable windows, Start menu, and CRT intro screen.",
-    status: "Live",
-  },
-  {
-    name: "FilterCam",
-    meta: "Android · Kotlin · Jetpack Compose · CameraX · OpenGL ES",
-    desc: "A native Android camera app with hand-tuned filters. A GPU shader gives a live filtered preview and processes the saved photos, and you can tune, import, rename, share and export your own filters. The first preset, Jade, is a green film look with warm skin tones.",
-    status: "In progress",
-  },
-  {
-    name: "OTA & Reservations Intern",
-    meta: "Matcha Tourism · Jan 2026 – Feb 2026 · Kyoto, Japan",
-    desc: "Assisted market research and planning for the company's new luxury tourism package priced at JPY 1 million, and coordinated with the creative, planning and finance teams.",
-    status: "Internship",
-  },
-  {
-    name: "HR Intern",
-    meta: "ONE DEJIMA · Nagasaki, Japan",
-    desc: "Designed and pitched a candidate-outreach framework with a cross-functional team; the proposal ranked 1st among all teams.",
-    status: "Internship",
+    label: "Internships",
+    items: [
+      {
+        name: "OTA & Reservations Intern",
+        meta: "Matcha Tourism · Jan 2026 – Feb 2026 · Kyoto, Japan",
+        desc: "Assisted market research and planning for the company's new luxury tourism package priced at JPY 1 million, and coordinated with the creative, planning and finance teams.",
+      },
+      {
+        name: "HR Intern",
+        meta: "ONE DEJIMA · Nagasaki, Japan",
+        desc: "Designed and pitched a candidate-outreach framework with a cross-functional team; the proposal ranked 1st among all teams.",
+      },
+    ],
   },
 ];
 
@@ -423,59 +442,80 @@ export function PortfolioWindow() {
 
         {tab === "projects" && (
           <SectionBox>
-            {projects.map((p, i) => (
-              <div
-                key={i}
-                style={{
-                  marginBottom: i < projects.length - 1 ? 16 : 0,
-                  paddingBottom: i < projects.length - 1 ? 16 : 0,
-                  borderBottom:
-                    i < projects.length - 1 ? "1px dashed #c0c0c0" : "none",
-                }}
-              >
+            {projectSections.map((section, s) => (
+              <div key={section.label} style={{ marginTop: s > 0 ? 20 : 0 }}>
+                {/* Section heading */}
                 <div
                   style={{
-                    display: "flex",
-                    alignItems: "baseline",
-                    gap: 8,
-                    marginBottom: 2,
+                    fontSize: 10,
+                    fontWeight: 700,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    opacity: 0.6,
+                    marginBottom: 10,
+                    paddingBottom: 3,
+                    borderBottom: "1px solid #808080",
                   }}
                 >
-                  {p.url ? (
-                    <a
-                      href={p.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      style={{
-                        fontWeight: 700,
-                        fontSize: 13,
-                        color: "#000080",
-                        textDecoration: "underline",
-                      }}
-                    >
-                      {p.name}
-                    </a>
-                  ) : (
-                    <span style={{ fontWeight: 700, fontSize: 13 }}>{p.name}</span>
-                  )}
-                  <span
+                  {section.label}
+                </div>
+                {section.items.map((p, i) => (
+                  <div
+                    key={p.name}
                     style={{
-                      fontSize: 9,
-                      padding: "1px 5px",
-                      background: statusColors[p.status],
-                      color: "#fff",
-                      letterSpacing: "0.05em",
+                      marginBottom: i < section.items.length - 1 ? 16 : 0,
+                      paddingBottom: i < section.items.length - 1 ? 16 : 0,
+                      borderBottom:
+                        i < section.items.length - 1 ? "1px dashed #c0c0c0" : "none",
                     }}
                   >
-                    {p.status}
-                  </span>
-                </div>
-                <div style={{ fontSize: 10, opacity: 0.6, marginBottom: 5 }}>
-                  {p.meta}
-                </div>
-                <div style={{ fontSize: 11, opacity: 0.9, lineHeight: 1.5 }}>
-                  {p.desc}
-                </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "baseline",
+                        gap: 8,
+                        marginBottom: 2,
+                      }}
+                    >
+                      {p.url ? (
+                        <a
+                          href={p.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{
+                            fontWeight: 700,
+                            fontSize: 13,
+                            color: "#000080",
+                            textDecoration: "underline",
+                          }}
+                        >
+                          {p.name}
+                        </a>
+                      ) : (
+                        <span style={{ fontWeight: 700, fontSize: 13 }}>{p.name}</span>
+                      )}
+                      {p.status && (
+                        <span
+                          style={{
+                            fontSize: 9,
+                            padding: "1px 5px",
+                            background: statusColors[p.status],
+                            color: "#fff",
+                            letterSpacing: "0.05em",
+                          }}
+                        >
+                          {p.status}
+                        </span>
+                      )}
+                    </div>
+                    <div style={{ fontSize: 10, opacity: 0.6, marginBottom: 5 }}>
+                      {p.meta}
+                    </div>
+                    <div style={{ fontSize: 11, opacity: 0.9, lineHeight: 1.5 }}>
+                      {p.desc}
+                    </div>
+                  </div>
+                ))}
               </div>
             ))}
           </SectionBox>
