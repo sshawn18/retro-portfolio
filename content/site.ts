@@ -32,6 +32,8 @@ export type SiteConfig = {
   letterboxdUsername: string;
   /** AniList username used by the Anime List window. Public handle — not a secret. */
   anilistUsername: string;
+  /** Last.fm username linked from the taskbar. Public handle — not a secret. */
+  lastfmUsername: string;
 };
 
 export const site: SiteConfig = {
@@ -59,4 +61,5 @@ export const site: SiteConfig = {
   credit: "Hand-built with Next.js + 98.css.",
   letterboxdUsername: "SHAWN_18",
   anilistUsername: "SHAWN18",
+  lastfmUsername: "SHAWN_18",
 };

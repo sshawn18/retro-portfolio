@@ -30,6 +30,48 @@ function LinkedInIcon() {
   );
 }
 
+function LetterboxdIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M8.224 14.352a4.447 4.447 0 0 1-3.775 2.092C1.992 16.444 0 14.454 0 12s1.992-4.444 4.45-4.444c1.592 0 2.988.836 3.774 2.092-.427.682-.673 1.488-.673 2.352s.246 1.67.673 2.352zM15.101 12c0-.864.247-1.67.674-2.352-.786-1.256-2.183-2.092-3.775-2.092s-2.989.836-3.775 2.092c.427.682.674 1.488.674 2.352s-.247 1.67-.674 2.352c.786 1.256 2.183 2.092 3.775 2.092s2.989-.836 3.775-2.092A4.42 4.42 0 0 1 15.1 12zm4.45-4.444a4.447 4.447 0 0 0-3.775 2.092c.427.682.673 1.488.673 2.352s-.246 1.67-.673 2.352a4.447 4.447 0 0 0 3.775 2.092C22.008 16.444 24 14.454 24 12s-1.992-4.444-4.45-4.444z" />
+    </svg>
+  );
+}
+
+function LastFmIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M10.584 17.21l-.88-2.392s-1.43 1.594-3.573 1.594c-1.897 0-3.244-1.649-3.244-4.288 0-3.382 1.704-4.591 3.381-4.591 2.42 0 3.189 1.567 3.849 3.574l.88 2.749c.88 2.666 2.529 4.81 7.285 4.81 3.409 0 5.718-1.044 5.718-3.793 0-2.227-1.265-3.381-3.63-3.931l-1.758-.385c-1.21-.275-1.567-.77-1.567-1.595 0-.934.742-1.484 1.952-1.484 1.32 0 2.034.495 2.144 1.677l2.749-.33c-.22-2.474-1.924-3.492-4.729-3.492-2.474 0-4.893.935-4.893 3.932 0 1.87.907 3.051 3.189 3.601l1.87.44c1.402.33 1.869.907 1.869 1.704 0 1.017-.99 1.43-2.86 1.43-2.776 0-3.93-1.457-4.59-3.464l-.907-2.75c-1.155-3.573-2.997-4.893-6.653-4.893C2.144 5.333 0 7.89 0 12.233c0 4.18 2.144 6.434 5.993 6.434 3.106 0 4.591-1.457 4.591-1.457z" />
+    </svg>
+  );
+}
+
+function TaskbarLink({
+  href,
+  title,
+  label,
+  icon,
+}: {
+  href: string;
+  title: string;
+  label: string;
+  icon: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      title={title}
+      className="flex items-center gap-1.5 h-7 px-2 text-[11px] hover:bg-[#000080] hover:text-white transition-none"
+      style={{ textDecoration: "none", color: "inherit" }}
+    >
+      {icon}
+      <span>{label}</span>
+    </a>
+  );
+}
+
 /* ── Separator ───────────────────────────────────────────────── */
 function Sep() {
   return (
@@ -95,29 +137,30 @@ export function Taskbar({
       <div className="hidden sm:flex items-center gap-1">
         <Sep />
 
-        <a
+        <TaskbarLink
           href="https://github.com/sshawn18"
-          target="_blank"
-          rel="noreferrer"
           title="GitHub — @sshawn18"
-          className="flex items-center gap-1.5 h-7 px-2 text-[11px] hover:bg-[#000080] hover:text-white transition-none"
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
-          <GitHubIcon />
-          <span>GitHub</span>
-        </a>
-
-        <a
+          label="GitHub"
+          icon={<GitHubIcon />}
+        />
+        <TaskbarLink
           href={site.linkedin}
-          target="_blank"
-          rel="noreferrer"
           title="LinkedIn — Ravi Gupta"
-          className="flex items-center gap-1.5 h-7 px-2 text-[11px] hover:bg-[#000080] hover:text-white transition-none"
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
-          <LinkedInIcon />
-          <span>LinkedIn</span>
-        </a>
+          label="LinkedIn"
+          icon={<LinkedInIcon />}
+        />
+        <TaskbarLink
+          href={`https://letterboxd.com/${site.letterboxdUsername}/`}
+          title={`Letterboxd — @${site.letterboxdUsername}`}
+          label="Letterboxd"
+          icon={<LetterboxdIcon />}
+        />
+        <TaskbarLink
+          href={`https://www.last.fm/user/${site.lastfmUsername}`}
+          title={`Last.fm — @${site.lastfmUsername}`}
+          label="Last.fm"
+          icon={<LastFmIcon />}
+        />
 
         <Sep />
       </div>
